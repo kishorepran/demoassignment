@@ -13,7 +13,7 @@ struct URLBuilder {
     var weatherParam = ""
     var countryCode = ""
     
-    func urlForResource() -> String {
+    func rawValue() -> String {
         return "\(baseUrl)\(weatherParam)/date/\(countryCode).txt"
     }
 }
@@ -27,11 +27,28 @@ class WaetherDataManager {
     let waetherParams = ["Tmean", "Sunshine", "Rainfall", "Tmax", "Tmin"]
     let months = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"]
     
+    var arrWeatherData : [WeatherRecord]
+    init() {
+        arrWeatherData = []
+    }
+    
     func downloadAllRecords() {
+        
         for country in countryCodes {
             for weatherParam in waetherParams {
                 var url = URLBuilder() ; url.weatherParam = weatherParam ; url.countryCode = country;
-                print(url.urlForResource())
+                
+                guard let address = URL.init(string: url.rawValue()) else {print("URL error for \(url.rawValue())"); continue}
+                do {
+                    let data = try Data.init(contentsOf: address)
+                    guard let text = String.init(data: data, encoding: .utf8) ,let record = parse(Text: text, forCountry: country, Weather: weatherParam) else {
+                            print("Failing for \(url.rawValue())");
+                            continue
+                    }
+                    arrWeatherData.append(contentsOf: record)
+                } catch {
+                    print(error)
+                }
             }
         }
     }
@@ -73,12 +90,4 @@ class WaetherDataManager {
         }
         return arrWeatherRecord
     }
-}
-
-class WeatherData {
-    var arrWeatherData : [WeatherRecord]
-    init() {
-        arrWeatherData = []
-    }
-    
 }

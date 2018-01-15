@@ -57,6 +57,24 @@ class KisanHubAssignmentTests: XCTestCase {
         
     }
     
+    func testURL() {
+        
+        let url = URL.init(string: "https://www.metoffice.gov.uk/pub/data/weather/uk/climate/datasets/Tmax/date/UK.txt")
+        do {
+            let data = try Data.init(contentsOf: url!)
+            let text = String.init(data: data, encoding: .utf8)
+            print(text ?? "Failure")
+        } catch {
+            print(error)
+        }
+    }
+    
+    func testDownloading() {
+        let manager = WaetherDataManager()
+        manager.downloadAllRecords()
+        print(manager.arrWeatherData.count)
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
