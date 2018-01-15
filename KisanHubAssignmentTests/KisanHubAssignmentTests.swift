@@ -72,7 +72,7 @@ class KisanHubAssignmentTests: XCTestCase {
     func testDownloading() {
         let manager = WaetherDataManager()
         manager.downloadAllRecords()
-        print(manager.arrWeatherData.count)
+        print(manager.pathForExportedCSVFile() ?? "Faliure")
     }
     
     func testPerformanceExample() {

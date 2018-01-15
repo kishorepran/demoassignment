@@ -90,4 +90,26 @@ class WaetherDataManager {
         }
         return arrWeatherRecord
     }
+    
+    func pathForExportedCSVFile() -> String? {
+        
+        let fileName = "exportedText.csv"
+        let path = URL.init(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+        
+        var longText = "region_code,weather_param,year, key,value\n"
+        
+        for record in arrWeatherData {
+            let nextLine = "\(record.region_code),\(record.weather_param),\(record.year),\(record.entityValue)\n"
+            longText.append(nextLine)
+        }
+        
+        do {
+            try longText.write(to: path, atomically: true, encoding: .utf8)
+        } catch {
+            print("Failed to create file \(error)")
+            return nil
+        }
+        
+        return path.absoluteString
+    }
 }
