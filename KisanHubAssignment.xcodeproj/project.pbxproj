@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		9B6C2724200D2EAC00308F99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6C2723200D2EAC00308F99 /* AppDelegate.swift */; };
-		9B6C2726200D2EAC00308F99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6C2725200D2EAC00308F99 /* ViewController.swift */; };
 		9B6C2729200D2EAC00308F99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B6C2727200D2EAC00308F99 /* Main.storyboard */; };
 		9B6C272B200D2EAC00308F99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B6C272A200D2EAC00308F99 /* Assets.xcassets */; };
 		9B6C272E200D2EAC00308F99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B6C272C200D2EAC00308F99 /* LaunchScreen.storyboard */; };
 		9B6C2739200D2EAC00308F99 /* KisanHubAssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6C2738200D2EAC00308F99 /* KisanHubAssignmentTests.swift */; };
+		9B6C2747200D2F1F00308F99 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6C2746200D2F1F00308F99 /* MainTableViewController.swift */; };
+		9B6C2749200D2F5900308F99 /* WeatherRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6C2748200D2F5900308F99 /* WeatherRecord.swift */; };
+		9B6C274B200D2F7200308F99 /* WaetherDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6C274A200D2F7200308F99 /* WaetherDataManager.swift */; };
+		9B6C274F200D4F6000308F99 /* UK.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9B6C274C200D4E3200308F99 /* UK.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +31,6 @@
 /* Begin PBXFileReference section */
 		9B6C2720200D2EAC00308F99 /* KisanHubAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KisanHubAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B6C2723200D2EAC00308F99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9B6C2725200D2EAC00308F99 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9B6C2728200D2EAC00308F99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9B6C272A200D2EAC00308F99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B6C272D200D2EAC00308F99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +38,10 @@
 		9B6C2734200D2EAC00308F99 /* KisanHubAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KisanHubAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B6C2738200D2EAC00308F99 /* KisanHubAssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KisanHubAssignmentTests.swift; sourceTree = "<group>"; };
 		9B6C273A200D2EAC00308F99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B6C2746200D2F1F00308F99 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		9B6C2748200D2F5900308F99 /* WeatherRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRecord.swift; sourceTree = "<group>"; };
+		9B6C274A200D2F7200308F99 /* WaetherDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaetherDataManager.swift; sourceTree = "<group>"; };
+		9B6C274C200D4E3200308F99 /* UK.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UK.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +83,10 @@
 		9B6C2722200D2EAC00308F99 /* KisanHubAssignment */ = {
 			isa = PBXGroup;
 			children = (
+				9B6C2745200D2EFF00308F99 /* Controller */,
+				9B6C2744200D2EFF00308F99 /* Model */,
+				9B6C2743200D2EFF00308F99 /* View */,
 				9B6C2723200D2EAC00308F99 /* AppDelegate.swift */,
-				9B6C2725200D2EAC00308F99 /* ViewController.swift */,
 				9B6C2727200D2EAC00308F99 /* Main.storyboard */,
 				9B6C272A200D2EAC00308F99 /* Assets.xcassets */,
 				9B6C272C200D2EAC00308F99 /* LaunchScreen.storyboard */,
@@ -91,9 +99,34 @@
 			isa = PBXGroup;
 			children = (
 				9B6C2738200D2EAC00308F99 /* KisanHubAssignmentTests.swift */,
+				9B6C274C200D4E3200308F99 /* UK.txt */,
 				9B6C273A200D2EAC00308F99 /* Info.plist */,
 			);
 			path = KisanHubAssignmentTests;
+			sourceTree = "<group>";
+		};
+		9B6C2743200D2EFF00308F99 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9B6C2744200D2EFF00308F99 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9B6C2748200D2F5900308F99 /* WeatherRecord.swift */,
+				9B6C274A200D2F7200308F99 /* WaetherDataManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9B6C2745200D2EFF00308F99 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9B6C2746200D2F1F00308F99 /* MainTableViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,7 +179,7 @@
 				TargetAttributes = {
 					9B6C271F200D2EAC00308F99 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					9B6C2733200D2EAC00308F99 = {
 						CreatedOnToolsVersion = 9.2;
@@ -179,6 +212,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B6C274F200D4F6000308F99 /* UK.txt in Resources */,
 				9B6C272E200D2EAC00308F99 /* LaunchScreen.storyboard in Resources */,
 				9B6C272B200D2EAC00308F99 /* Assets.xcassets in Resources */,
 				9B6C2729200D2EAC00308F99 /* Main.storyboard in Resources */,
@@ -199,7 +233,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B6C2726200D2EAC00308F99 /* ViewController.swift in Sources */,
+				9B6C274B200D2F7200308F99 /* WaetherDataManager.swift in Sources */,
+				9B6C2747200D2F1F00308F99 /* MainTableViewController.swift in Sources */,
+				9B6C2749200D2F5900308F99 /* WeatherRecord.swift in Sources */,
 				9B6C2724200D2EAC00308F99 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,11 +389,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = KisanHubAssignment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.general.development.KisanHubAssignment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -367,11 +405,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = KisanHubAssignment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.general.development.KisanHubAssignment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

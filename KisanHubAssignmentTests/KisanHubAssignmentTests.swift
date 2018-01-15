@@ -21,9 +21,40 @@ class KisanHubAssignmentTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testCharatcersForParsing() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        if let path = Bundle.main.path(forResource: "UK", ofType: "txt") {
+            do {
+                let data = try String(contentsOfFile: path, encoding: .utf8)
+                let rows = data.split(separator: "\r\n").map({String($0)}) //Line sperator of text file is \r\n
+                let manager = WaetherDataManager()
+                let stripped = manager.strip(FromText:rows, ignoringElements: manager.metadataLines)!
+                
+                for row in stripped {
+                    let columns = row.split(separator: " ").map({String($0)})
+                    print(columns.first!)
+                }
+                
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func testParsing() {
+        
+        if let path = Bundle.main.path(forResource: "UK", ofType: "txt") {
+            do {
+                let data = try String(contentsOfFile: path, encoding: .utf8)
+                let manager = WaetherDataManager()
+                let items = manager.parse(Text: data, forCountry: "UK" , Weather: "Tmean" )
+                print(items?.count ?? "Failure")
+            } catch {
+                print(error)
+            }
+        }
+        
     }
     
     func testPerformanceExample() {
