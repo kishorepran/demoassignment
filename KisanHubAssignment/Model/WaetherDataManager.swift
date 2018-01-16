@@ -32,6 +32,8 @@ class WaetherDataManager {
         arrWeatherData = []
     }
     
+    
+    
     func downloadAllRecords() {
         
         for country in countryCodes {
@@ -91,10 +93,27 @@ class WaetherDataManager {
         return arrWeatherRecord
     }
     
-    func pathForExportedCSVFile() -> String? {
+    var exportURL = URL.init(fileURLWithPath: NSTemporaryDirectory())
+    
+    @discardableResult func pathForExportedCSVFile() -> String? {
         
         let fileName = "exportedText.csv"
-        let path = URL.init(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+        let pathToFile = URL.init(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+        exportURL = pathToFile
+        
+        let longText = completeText()
+        
+        do {
+            try longText.write(to: pathToFile, atomically: true, encoding: .utf8)
+        } catch {
+            print("Failed to create file \(error)")
+            return nil
+        }
+        
+        return pathToFile.absoluteString
+    }
+    
+    func completeText() -> String {
         
         var longText = "region_code,weather_param,year, key,value\n"
         
@@ -103,13 +122,6 @@ class WaetherDataManager {
             longText.append(nextLine)
         }
         
-        do {
-            try longText.write(to: path, atomically: true, encoding: .utf8)
-        } catch {
-            print("Failed to create file \(error)")
-            return nil
-        }
-        
-        return path.absoluteString
+        return longText
     }
 }

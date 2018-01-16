@@ -10,6 +10,8 @@ import UIKit
 
 class MainTableViewController: UITableViewController {
 
+    let manager = WaetherDataManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,8 +20,22 @@ class MainTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        DispatchQueue.global(qos: .userInitiated).async { // 1
+            self.manager.downloadAllRecords()
+            self.manager.pathForExportedCSVFile()
+            DispatchQueue.main.async { // 2
+                self.tableView.reloadData() // 3
+            }
+        }
+        
     }
 
+    @IBAction func btnClickShare(_ sender: Any) {
+        
+        let activityController = UIActivityViewController(activityItems: [manager.exportURL], applicationActivities: nil)
+        present(activityController, animated: true, completion: nil)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -29,23 +45,26 @@ class MainTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return manager.arrWeatherData.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         // Configure the cell...
-
+        let record = manager.arrWeatherData[indexPath.row]
+        cell.textLabel?.text = "\(record.region_code),\(record.weather_param)"
+        cell.detailTextLabel?.text = "\(record.year),\(record.entityValue)"
+        
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
