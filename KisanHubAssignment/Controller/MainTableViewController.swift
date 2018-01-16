@@ -21,10 +21,13 @@ class MainTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
+        let sv = UIViewController.displaySpinner(onView: self.tableView)
+        
         DispatchQueue.global(qos: .userInitiated).async { // 1
             self.manager.downloadAllRecords()
             self.manager.pathForExportedCSVFile()
             DispatchQueue.main.async { // 2
+                UIViewController.removeSpinner(spinner: sv)
                 self.tableView.reloadData() // 3
             }
         }
@@ -36,6 +39,7 @@ class MainTableViewController: UITableViewController {
         let activityController = UIActivityViewController(activityItems: [manager.exportURL], applicationActivities: nil)
         present(activityController, animated: true, completion: nil)
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -111,4 +115,27 @@ class MainTableViewController: UITableViewController {
     }
     */
 
+}
+extension UIViewController {
+    
+    class func displaySpinner(onView : UIView) -> UIView {
+        let spinnerView = UIView.init(frame: onView.bounds)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        let ai = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
+        ai.startAnimating()
+        ai.center = spinnerView.center
+        
+        DispatchQueue.main.async {
+            spinnerView.addSubview(ai)
+            onView.addSubview(spinnerView)
+        }
+        
+        return spinnerView
+    }
+    
+    class func removeSpinner(spinner :UIView) {
+        DispatchQueue.main.async {
+            spinner.removeFromSuperview()
+        }
+    }
 }
