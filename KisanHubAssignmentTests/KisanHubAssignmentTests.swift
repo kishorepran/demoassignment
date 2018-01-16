@@ -75,6 +75,16 @@ class KisanHubAssignmentTests: XCTestCase {
         print(manager.pathForExportedCSVFile() ?? "Faliure")
     }
     
+    func testNumber() {
+        let number = "--";
+        
+        if let _ = Double.init(number) {
+            print("string is a valid number")
+        } else {
+            print("string contained non-digit characters")
+        }
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

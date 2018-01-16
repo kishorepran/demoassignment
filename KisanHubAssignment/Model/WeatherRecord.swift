@@ -21,6 +21,13 @@ class WeatherRecord {
         self.weather_param = weather_param
         self.year = year
         self.month = month
-        self.entityValue = entityValue
+        
+        //Check if we get valid number here.
+        if let _ = Double.init(entityValue) {
+            self.entityValue = entityValue
+        } else {
+            self.entityValue = "N/A"
+        }
+        
     }
 }
